@@ -19,4 +19,9 @@ export class CustomerManagerComponent implements OnInit {
    
   }
 
+  edit()
+  {
+    console.log("se hizo click en el boton");
+  }
+
 }

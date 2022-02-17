@@ -1,0 +1,52 @@
+
+<app-header-breadcrumb [title]="'Editar cliente'" [items]="['Configuracion']" [active_item]="'Cliente'"></app-header-breadcrumb>
+<div class="col-lg-8 col-xl-8 col-md-12 col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Editar cliente</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="form-group">
+                        <label for="exampleInputname">Nombre</label>
+                        <input type="text" class="form-control" id="exampleInputname" placeholder="Nombre">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="form-group">
+                        <label for="exampleInputname1">Apellido</label>
+                        <input type="text" class="form-control" id="exampleInputname1"
+                            placeholder="Apellido">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="form-group">
+                        <label for="exampleInputname1">Nombre del negocio</label>
+                        <input type="text" class="form-control" id="exampleInputname1"
+                            placeholder="Nombre del negocio">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputnumber">Número de telefono fijo</label>
+                <input type="number" class="form-control" id="exampleInputnumber" placeholder="Número de telefono fijo">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputnumber">Número de telefono movil</label>
+                <input type="number" class="form-control" id="exampleInputnumber" placeholder="Número de telefono movil">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Observaciones</label>
+                <textarea class="form-control" rows="6">Observaciones....</textarea>
+            </div>          
+        <div class="card-footer text-end">
+            <a (click)="save()" class="btn btn-success mt-1 me-2">Guardar</a>
+            <a (click)="cancelar()" class="btn btn-danger mt-1">Cancel</a>
+        </div>
+    </div>
+</div>

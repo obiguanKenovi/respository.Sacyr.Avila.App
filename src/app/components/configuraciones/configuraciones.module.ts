@@ -4,21 +4,26 @@ import { CustomerManagerComponent } from './customer-manager/customer-manager.co
 import { ConfiguracionesRoutingModule } from './configuraciones-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../../shared/shared.module';
+import { EditCustomerComponent } from './edit-customer/edit-customer.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
 @NgModule({
   declarations: [
-    CustomerManagerComponent
+    CustomerManagerComponent,
+    EditCustomerComponent
   ],
   exports:[
-    CustomerManagerComponent
+    CustomerManagerComponent,
+    EditCustomerComponent
   ],
   imports: [
     CommonModule,
     ConfiguracionesRoutingModule,
     NgbModule,
-    SharedModule
+    SharedModule,
+    NgSelectModule
   ]
 })
 export class ConfiguracionesModule { }

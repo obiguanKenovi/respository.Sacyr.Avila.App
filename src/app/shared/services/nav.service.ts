@@ -77,6 +77,8 @@ export class NavService implements OnDestroy {
             title: 'Configuraciones', icon: 'database', type: 'sub', active: false,
             children: [
                 { path: '/configuraciones/clientes', title: 'Clientes', type: 'link' },
+                { path: '/configuraciones/editar-cliente/:id', type:''},
+                { path: '/configuraciones/editar-cliente', type:''},
             ]
         },
         {

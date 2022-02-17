@@ -1,3 +1,123 @@
 
 <app-header-breadcrumb [title]="'Cliente'" [items]="['Configuracion']" [active_item]="'Cliente'"></app-header-breadcrumb>
-<p>customer-manager works!</p>
+
+<!-- ROW-2 OPEN -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header ">
+                <h3 class="card-title ">Lista de clientes</h3>
+                <div class="card-options">
+                    <button id="add__new__list" type="button" class="btn btn-md btn-primary " data-bs-toggle="modal"
+                        data-target=".bd-example-modal-lg"><i class="fa fa-plus"></i>Añadir nuevo cliente</button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover card-table table-striped table-vcenter table-outline text-nowrap">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Nombre del negocio</th>
+                            <th scope="col">NIF</th>
+                            <th scope="col">Telefono movil </th>
+                            <th scope="col">Telefono fijo</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>At vero eos et accusamus et iusto odio</td>
+                            <td>PHP</td>
+                            <td>15/11/2018</td>
+                            <td>15 Members</td>
+                            <td>At vero eos et accusamus et iusto odio</td>
+                            <td>PHP</td>
+                            <td>15/11/2018</td>
+                            <td>15 Members</td>
+                            <td>
+                                <a class="btn btn-sm btn-primary me-2" (click)="edit()" ><i class="fa fa-edit"></i> Edit</a>
+                                <a class="btn btn-sm btn-danger" href="javascript:;"><i class="fa fa-trash"></i> Delete</a>
+                            </td>
+                            <td><a class="btn btn-sm btn-secondary" href="javascript:;"><i class="fa fa-info-circle"></i>
+                                    Details</a> </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>voluptatum deleniti atque corrupti quos</td>
+                            <td>Angular js</td>
+                            <td>25/11/2018</td>
+                            <td>12 Members</td>
+                            <td>At vero eos et accusamus et iusto odio</td>
+                            <td>PHP</td>
+                            <td>15/11/2018</td>
+                            <td>15 Members</td>
+                            <td>
+                                <a class="btn btn-sm btn-primary me-2" href="javascript:;"><i class="fa fa-edit"></i> Edit</a>
+                                <a class="btn btn-sm btn-danger" href="javascript:;"><i class="fa fa-trash"></i> Delete</a>
+                            </td>
+                            <td><a class="btn btn-sm btn-secondary" href="javascript:;"><i class="fa fa-info-circle"></i>
+                                    Details</a> </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>dignissimos ducimus qui blanditiis praesentium </td>
+                            <td>Java</td>
+                            <td>5/12/2018</td>
+                            <td>20 Members</td>
+                            <td>At vero eos et accusamus et iusto odio</td>
+                            <td>PHP</td>
+                            <td>15/11/2018</td>
+                            <td>15 Members</td>
+                            <td>
+                                <a class="btn btn-sm btn-primary me-2" href="javascript:;"><i class="fa fa-edit"></i> Edit</a>
+                                <a class="btn btn-sm btn-danger" href="javascript:;"><i class="fa fa-trash"></i> Delete</a>
+                            </td>
+                            <td><a class="btn btn-sm btn-secondary" href="javascript:;"><i class="fa fa-info-circle"></i>
+                                    Details</a> </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>deleniti atque corrupti quos dolores </td>
+                            <td>Phython</td>
+                            <td>14/12/2018</td>
+                            <td>10 Members</td>
+                            <td>At vero eos et accusamus et iusto odio</td>
+                            <td>PHP</td>
+                            <td>15/11/2018</td>
+                            <td>15 Members</td>
+                            <td>
+                                <a class="btn btn-sm btn-primary me-2" href="javascript:;"><i class="fa fa-edit"></i> Edit</a>
+                                <a class="btn btn-sm btn-danger" href="javascript:;"><i class="fa fa-trash"></i> Delete</a>
+                            </td>
+                            <td><a class="btn btn-sm btn-secondary" href="javascript:;"><i class="fa fa-info-circle"></i>
+                                    Details</a> </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>et quas molestias excepturi sint occaecati</td>
+                            <td>Phython</td>
+                            <td>4/12/2018</td>
+                            <td>17 Members</td>
+                            <td>et quas molestias excepturi sint occaecati</td>
+                            <td>Phython</td>
+                            <td>4/12/2018</td>
+                            <td>17 Members</td>
+                            
+                            <td>
+                                <a class="btn btn-sm btn-primary me-2" [routerLink]="['/configuraciones/editar-cliente']"><i class="fa fa-edit"></i> Edit</a>
+                                <a class="btn btn-sm btn-danger" href="javascript:;"><i class="fa fa-trash"></i> Delete</a>
+                            </td>
+                            <td><a class="btn btn-sm btn-secondary" href="javascript:;"><i class="fa fa-info-circle"></i>
+                                    Details</a> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ROW-2 CLOSED -->
