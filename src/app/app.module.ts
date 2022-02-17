@@ -12,6 +12,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './authentication/register/register.component';
 import { LoginPageComponent } from './authentication/login-page/login-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -36,6 +37,7 @@ import { LoginPageComponent } from './authentication/login-page/login-page.compo
     AngularFireStorageModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
