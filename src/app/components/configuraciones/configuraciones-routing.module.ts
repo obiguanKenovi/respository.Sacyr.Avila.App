@@ -4,6 +4,9 @@ import { CustomerManagerComponent } from './customer-manager/customer-manager.co
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 
 
+import { AuthGuard } from '../../guards/auth.guard';
+
+
 
 const routes: Routes = [
    {
@@ -11,7 +14,8 @@ const routes: Routes = [
     children: [
       {
         path: 'clientes',
-        component: CustomerManagerComponent
+        component: CustomerManagerComponent,
+        canActivate: [AuthGuard]
       }, 
       {
         path: 'editar-cliente',

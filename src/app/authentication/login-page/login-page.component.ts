@@ -27,7 +27,7 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email : ['jose@jose',[Validators.required, Validators.email]],
+      email : [localStorage.getItem('email')||'',[Validators.required, Validators.email]],
       password : ['userPassword2*', Validators.required],
       remember : [false],
    
@@ -35,7 +35,8 @@ export class LoginPageComponent implements OnInit {
   }
 
   // firebase
-  email = "admin@demo.com";
+  //email = "admin@demo.com";
+  email = "jose@jose";
   password = "admindemo";
   errorMessage = ''; // validation _error handle
   _error: { name: string, message: string } = { name: '', message: '' }; // for firbase _error handle
@@ -49,35 +50,36 @@ export class LoginPageComponent implements OnInit {
   {
     console.log(this.loginForm.value);
     this.formSubmitted = true;
+
     if( this.loginForm.valid )
     {
       console.log('Formulario validado exitosamente');
-
       this._userService.loginUser(this.loginForm.value)
       .subscribe(
-        resp=>{    
-          
+        resp=>{           
           console.log('Valor que trae el remember');
           console.log( this.loginForm?.value.remember);
            // En caso de que el usuarion quiera que se recuerde  email
             if ( this.loginForm?.value.remember )
             {
+              //Guardo en el local storage el email.
               localStorage.setItem('email',this.loginForm?.get('email')?.value);
             }
             else
             {
-             //en caso contrario.
+             //en caso contrario elimino el del local storage.
               localStorage.removeItem('email');
-            }
-            
+            }        
           console.log(resp);
            const { isVerified  } = resp.data;
            if( isVerified )
            {
             this.router.navigate(['/dashboard'])
+            console.clear();
            }
            else{
             this.router.navigate(['/'])
+
            }
         }
         ,error=>{
@@ -85,6 +87,9 @@ export class LoginPageComponent implements OnInit {
            Swal.fire('Error',error.error.Message, 'error');
         }
         )
+    } else
+    {
+      console.log('ERROR EN EL LOGIN');
     }
     // this.clearErrorMessage();
     // if (this.validateForm(this.email, this.password)) {
