@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../../services/customer/customer.service';
 
+//importaciones.
+import Swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-customer-manager',
@@ -38,6 +41,30 @@ export class CustomerManagerComponent implements OnInit {
           console.log();
       }
       )
+  }
+
+  sweeAlerTes()
+  {
+    Swal.fire({
+      title: '¿Estas seguro de querer realizar estas accion?',
+      text: "No podras revertir la acción!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar el registro.!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+         
+        console.log("eliminado archivos...");
+
+        Swal.fire(
+          'Eliminado!',
+          'El registro fue eliminado satisfactoriamente.',
+          'success'
+        )
+      }
+    })
   }
 
 }

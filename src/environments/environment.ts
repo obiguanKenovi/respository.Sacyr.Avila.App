@@ -12,7 +12,14 @@ export const environment = {
     messagingSenderId: "1088116497583",
     appId: "1:1088116497583:web:6d10b979c29d2a7544885a"
   },
+  
+  base_url:'https://localhost:44332',
+  api_user:'/api/',
+  api_register:'Account/register',
+  api_auth:'Account/authenticate'
 };
+
+//https://localhost:44332/api/Account/register
 
 /*
  * For easier debugging in development mode, you can import the following file

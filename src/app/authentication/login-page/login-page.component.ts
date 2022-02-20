@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { UserService } from '../../services/users/user.service';
+import * as data from 'src/app/shared/data/widgets/widgets';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-page',
@@ -12,13 +15,22 @@ export class LoginPageComponent implements OnInit {
 
   public _saludo:string='HOLA UN SALUDO';
 
+  public formSubmitted = false;
+
   active:any;
-  constructor(private authservice: AuthService, private router: Router, private formBuilder : FormBuilder) { }
+  constructor(
+    private authservice: AuthService,
+     private router: Router,
+      private formBuilder : FormBuilder,
+      private _userService:UserService
+      ) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username : ['admin@demo.com',[Validators.required, Validators.email]],
-      password : ['admindemo', Validators.required]
+      email : ['jose@jose',[Validators.required, Validators.email]],
+      password : ['userPassword2*', Validators.required],
+      remember : [false],
+   
     });
   }
 
@@ -35,17 +47,57 @@ export class LoginPageComponent implements OnInit {
 
   login()
   {
-    this.clearErrorMessage();
-    if (this.validateForm(this.email, this.password)) {
-      this.authservice.loginWithEmail(this.email, this.password)
-        .then(() => {
-         this.router.navigate(['/dashboard'])
-         console.clear()
-        }).catch((_error:any)=> {
-          this._error = _error
-          this.router.navigate(['/'])
-        })
+    console.log(this.loginForm.value);
+    this.formSubmitted = true;
+    if( this.loginForm.valid )
+    {
+      console.log('Formulario validado exitosamente');
+
+      this._userService.loginUser(this.loginForm.value)
+      .subscribe(
+        resp=>{    
+          
+          console.log('Valor que trae el remember');
+          console.log( this.loginForm?.value.remember);
+           // En caso de que el usuarion quiera que se recuerde  email
+            if ( this.loginForm?.value.remember )
+            {
+              localStorage.setItem('email',this.loginForm?.get('email')?.value);
+            }
+            else
+            {
+             //en caso contrario.
+              localStorage.removeItem('email');
+            }
+            
+          console.log(resp);
+           const { isVerified  } = resp.data;
+           if( isVerified )
+           {
+            this.router.navigate(['/dashboard'])
+           }
+           else{
+            this.router.navigate(['/'])
+           }
+        }
+        ,error=>{
+          console.warn( error.error.Message );
+           Swal.fire('Error',error.error.Message, 'error');
+        }
+        )
     }
+    // this.clearErrorMessage();
+    // if (this.validateForm(this.email, this.password)) {
+    //   this.authservice.loginWithEmail(this.email, this.password)
+    //     .then(() => {
+    //      this.router.navigate(['/dashboard'])
+    //      console.clear()
+    //     }).catch((_error:any)=> {
+    //       this._error = _error
+    //       this.router.navigate(['/'])
+    //     })
+    // }
+    
   }
 
   validateForm(email:string, password:string) {
@@ -86,5 +138,15 @@ export class LoginPageComponent implements OnInit {
       this.error = "Please check email and passowrd"
     }
   }
+
+  invalidField(field:string):boolean{
+
+    if( this.loginForm.get(field)?.invalid && this.formSubmitted )
+    {
+      return true;
+    }
+   return false;
+  }
+  
 
 }
