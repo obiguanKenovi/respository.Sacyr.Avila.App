@@ -39,13 +39,11 @@ export class UserService {
   }
 
    createUser(userForm:IRegisterForm){
+
     console.log('Url utilizada');
     console.log(`${base_url} ${ base_api} ${ base_register}`);
-
     return  this._http.post(`${base_url}${ base_api}${ base_register}`,userForm);
-
    }
-
    loginUser(loginUser:ILoginForm){
      console.log('Datos que se envia a autenticar');
      //console.log(loginUser);

@@ -29,7 +29,7 @@ export class LoginPageComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       email : [localStorage.getItem('email')||'',[Validators.required, Validators.email]],
       password : ['userPassword2*', Validators.required],
-      remember : [false],
+      remember : [true],
    
     });
   }

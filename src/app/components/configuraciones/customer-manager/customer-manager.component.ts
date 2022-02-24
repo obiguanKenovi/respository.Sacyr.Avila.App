@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../../services/customer/customer.service';
+import {FormsModule} from '@angular/forms'
 
 //importaciones.
 import Swal from 'sweetalert2'
+
 
 
 @Component({
@@ -13,6 +15,9 @@ import Swal from 'sweetalert2'
 })
 export class CustomerManagerComponent implements OnInit {
 
+ 
+public linkThem:any;
+public _dateSelected:string;
   constructor(
     private _customerService:CustomerService
   ) {
@@ -22,15 +27,29 @@ export class CustomerManagerComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('Se llamo a este elemento');
-    this.getCustomerAll();
+    this.getCustomerAll(); 
+    console.log('Valor del linkthem');
+    this.linkThem = document.getElementById("fecha");
+    console.log(this.linkThem);
+    this._dateSelected=this.format();
 
+    console.log(this.linkThem.value);
+     
   }
 
   edit()
   {
+    console.log(this.linkThem.value);
     console.log("se hizo click en el boton");
   }
 
+  format():string{
+    const f= new Date();
+    const año = f.getFullYear();
+    const mes = ("0" + (f.getMonth()+1)).substr(-2);
+    const dia = ("0" + f.getDate()).substr(-2);
+    return `${año}-${mes}-${dia}`
+}
   getCustomerAll()
   {
     this._customerService.getCustomerAll().subscribe(
